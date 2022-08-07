@@ -1,3 +1,5 @@
+import java.util.concurrent.LinkedTransferQueue;
+
 public class Radio {
     public int numberStation; // номер текущей радиостанции
 
@@ -18,6 +20,7 @@ public class Radio {
     public int volumeLevel; // громкость звука
 
     public int getVolumeLevel() { // получение уровня громкости
+
         return volumeLevel;
     }
 
@@ -37,15 +40,19 @@ public class Radio {
             numberStation = numberStation + 1;
             return numberStation;
         }
+        numberStation = 0;
         return numberStation;
     }
 
     public int prev() { // переключение радиостанции на уровень ниже
         if (numberStation > 0) {
             numberStation = numberStation - 1;
+            return numberStation;
         }
+        numberStation = 9;
         return numberStation;
     }
+
 
     public int increaseVolume() { // увеличение уровня громкости
         if (volumeLevel < 10) {
