@@ -5,6 +5,31 @@ public class RadioTests {
     Radio radio = new Radio();
 
     @Test
+    public void defaultRadio() {
+       int expected = 10;
+       int actual = radio.getCountStation();
+       Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void shouldBeMaxStation() {
+        Radio radio = new Radio (25, 40, 2);
+
+        int expected = 1;
+        int actual = radio.getNumberStation();
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void shouldBeNumberStation() {
+        Radio radio = new Radio (2, 45, 10);
+
+        int expected = 2;
+        int actual = radio.getNumberStation();
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
     public void zeroCountStation(){
         radio.setCountStation(0);
 
