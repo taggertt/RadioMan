@@ -3,26 +3,37 @@ import org.junit.jupiter.api.Assertions;
 
 public class RadioTests {
     Radio radio = new Radio();
+    Radio radio1 = new Radio(1, 40);
+    Radio radio2 = new Radio(25, 40, 2);
+    Radio radio4 = new Radio(14, 30);
 
     @Test
-    public void defaultRadio() {
-       int expected = 10;
-       int actual = radio.getCountStation();
-       Assertions.assertEquals(expected, actual);
+    public void shouldBeDefaultCountStation() {
+
+        int expected = 10;
+        int actual = radio1.getCountStation();
+        Assertions.assertEquals(expected, actual);
     }
 
     @Test
     public void shouldBeMaxStation() {
-        Radio radio = new Radio (25, 40, 2);
 
         int expected = 1;
-        int actual = radio.getNumberStation();
+        int actual = radio2.getNumberStation();
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void numberStationShouldBeEqCountStation() {
+
+        int expected = 9;
+        int actual = radio4.getNumberStation();
         Assertions.assertEquals(expected, actual);
     }
 
     @Test
     public void shouldBeNumberStation() {
-        Radio radio = new Radio (2, 45, 10);
+        Radio radio = new Radio(2, 45, 10);
 
         int expected = 2;
         int actual = radio.getNumberStation();
@@ -30,7 +41,7 @@ public class RadioTests {
     }
 
     @Test
-    public void zeroCountStation(){
+    public void zeroCountStation() {
         radio.setCountStation(0);
 
         int expected = 10;
@@ -118,14 +129,14 @@ public class RadioTests {
         Assertions.assertEquals(expected, actual);
     }
 
-        @Test
-        public void shouldNotSetVolumeBelowMin() {
-            radio.setVolumeLevel(-1);
+    @Test
+    public void shouldNotSetVolumeBelowMin() {
+        radio.setVolumeLevel(-1);
 
-            int expected = 0;
-            int actual = radio.getVolumeLevel();
-            Assertions.assertEquals(expected, actual);
-        }
+        int expected = 0;
+        int actual = radio.getVolumeLevel();
+        Assertions.assertEquals(expected, actual);
+    }
 
     @Test
     public void nextVolumeLevelMax() {
